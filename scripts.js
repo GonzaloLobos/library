@@ -44,8 +44,45 @@ function renderBooks() {
   myLibrary.forEach((currentBook) => {
     const bookElement = document.createElement("div");
     bookElement.classList.add("book");
-    bookElement.textContent = `${currentBook.title} by ${currentBook.author}`;
 
+    const bookCover = document.createElement("div");
+    bookCover.classList.add("book-cover");
+
+    const bookTitleCover = document.createElement("h1");
+    bookTitleCover.classList.add("book-title");
+    bookTitleCover.textContent = currentBook.title;
+
+    const p = document.createElement("p");
+    p.textContent = "by";
+
+    const bookAuthor = document.createElement("h2");
+    bookAuthor.classList.add("book-author");
+    bookAuthor.textContent = currentBook.author;
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.textContent = "X";
+
+    const bookTitleBody = document.createElement("h1");
+    bookTitleBody.classList.add("book-title");
+    bookTitleBody.textContent = currentBook.title;
+
+    const bookPages = document.createElement("h2");
+    bookPages.classList.add("book-pages");
+    bookPages.textContent = `${currentBook.pages} pages`;
+
+    const isReadBtn = document.createElement("button");
+    isReadBtn.classList.add("read-btn");
+    isReadBtn.textContent = currentBook.isRead ? "Read" : "Not read";
+
+    bookCover.append(bookTitleCover, p, bookAuthor);
+    bookElement.append(
+      bookCover,
+      deleteBtn,
+      bookTitleBody,
+      bookPages,
+      isReadBtn
+    );
     libraryContainer.appendChild(bookElement);
   });
 }
