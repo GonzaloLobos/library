@@ -8,6 +8,44 @@
     <script src="scripts.js" defer></script>
   </head>
   <body>
-    <button>Click me!</button>
+    <form action="" method="post" id="book-form">
+      <h1>Create Book</h1>
+      <div class="form-field">
+        <label for="title">Book Title</label>
+        <input type="text" name="title" id="title" required />
+      </div>
+      <div class="form-field">
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" required />
+      </div>
+      <div class="form-field">
+        <label for="pages">Number of Pages</label>
+        <input type="number" name="pages" id="pages" required />
+      </div>
+      <div class="form-field">
+        <h2>Have you read it yet?</h2>
+        <ul>
+          <li>
+            <label for="read">
+              <input
+                type="radio"
+                name="is-read"
+                id="read"
+                value="true"
+                checked
+              />
+              Yes
+            </label>
+          </li>
+          <li>
+            <label for="not-read">
+              <input type="radio" name="is-read" id="not-read" value="false" />
+              No
+            </label>
+          </li>
+        </ul>
+      </div>
+      <button class="add-book-btn">Add Book</button>
+    </form>
   </body>
 </html>
