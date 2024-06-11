@@ -20,6 +20,23 @@ function submitHandler(e) {
 
 form.addEventListener("submit", submitHandler);
 
+function clickHandler(e) {
+  const selectedEelement = e.target;
+  const selectedIndex = e.target.dataset.index;
+  if (selectedEelement.classList.contains("delete-btn")) {
+    myLibrary.splice(selectedIndex, 1);
+    renderBooks();
+  }
+  if (selectedEelement.classList.contains("read-btn")) {
+    myLibrary[selectedIndex].isRead = !myLibrary[selectedIndex].isRead;
+    selectedEelement.textContent = myLibrary[selectedIndex].isRead
+      ? "Read"
+      : "Not read";
+  }
+}
+
+libraryContainer.addEventListener("click", clickHandler);
+
 function addBookToLibrary(bookInput) {
   const bookObj = {};
   for (const value of bookInput) {
@@ -41,7 +58,7 @@ function clearLibrary() {
 
 function renderBooks() {
   clearLibrary();
-  myLibrary.forEach((currentBook) => {
+  myLibrary.forEach((currentBook, index) => {
     const bookElement = document.createElement("div");
     bookElement.classList.add("book");
 
@@ -62,6 +79,7 @@ function renderBooks() {
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
     deleteBtn.textContent = "X";
+    deleteBtn.setAttribute("data-index", index);
 
     const bookTitleBody = document.createElement("h1");
     bookTitleBody.classList.add("book-title");
@@ -74,6 +92,7 @@ function renderBooks() {
     const isReadBtn = document.createElement("button");
     isReadBtn.classList.add("read-btn");
     isReadBtn.textContent = currentBook.isRead ? "Read" : "Not read";
+    isReadBtn.setAttribute("data-index", index);
 
     bookCover.append(bookTitleCover, p, bookAuthor);
     bookElement.append(
@@ -85,4 +104,11 @@ function renderBooks() {
     );
     libraryContainer.appendChild(bookElement);
   });
+}
+
+// INITIAL BOOK EXAMPLES
+for (let i = 0; i < 10; i++) {
+  const book = new Book("Book Example", "Gonzo", 200, true);
+  myLibrary.push(book);
+  renderBooks();
 }
