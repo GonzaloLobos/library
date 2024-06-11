@@ -1,4 +1,5 @@
 const form = document.querySelector("#book-form");
+const libraryContainer = document.querySelector(".library-container");
 
 const myLibrary = [];
 
@@ -13,6 +14,7 @@ function submitHandler(e) {
   e.preventDefault();
   const formInput = new FormData(form);
   addBookToLibrary(formInput);
+  renderBooks();
   form.reset();
 }
 
@@ -30,4 +32,20 @@ function addBookToLibrary(bookInput) {
     bookObj.isRead
   );
   myLibrary.push(newBook);
+}
+
+function clearLibrary() {
+  const currentBooks = document.querySelectorAll(".book");
+  currentBooks.forEach((bookElement) => bookElement.remove());
+}
+
+function renderBooks() {
+  clearLibrary();
+  myLibrary.forEach((currentBook) => {
+    const bookElement = document.createElement("div");
+    bookElement.classList.add("book");
+    bookElement.textContent = `${currentBook.title} by ${currentBook.author}`;
+
+    libraryContainer.appendChild(bookElement);
+  });
 }
