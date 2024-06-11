@@ -1,13 +1,19 @@
 const form = document.querySelector("#book-form");
 const libraryContainer = document.querySelector(".library-container");
 
+const colourPalette = ["#885053", "#FE5F55", "#777DA7", "#94C9A9", "#884288"];
 const myLibrary = [];
 
-function Book(title, author, pages, isRead) {
+function Book(title, author, pages, isRead, colour) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
+  this.colour = colour;
+}
+
+function generateRandomColour() {
+  return colourPalette[Math.floor(Math.random() * colourPalette.length)];
 }
 
 function submitHandler(e) {
@@ -46,7 +52,8 @@ function addBookToLibrary(bookInput) {
     bookObj.title,
     bookObj.author,
     bookObj.pages,
-    bookObj.isRead
+    bookObj.isRead,
+    generateRandomColour()
   );
   myLibrary.push(newBook);
 }
@@ -64,6 +71,7 @@ function renderBooks() {
 
     const bookCover = document.createElement("div");
     bookCover.classList.add("book-cover");
+    bookCover.style.backgroundColor = currentBook.colour;
 
     const bookTitleCover = document.createElement("h1");
     bookTitleCover.classList.add("book-title");
@@ -108,7 +116,13 @@ function renderBooks() {
 
 // INITIAL BOOK EXAMPLES
 for (let i = 0; i < 10; i++) {
-  const book = new Book("Book Example", "Gonzo", 200, true);
+  const book = new Book(
+    "Book Example",
+    "Gonzo",
+    200,
+    true,
+    generateRandomColour()
+  );
   myLibrary.push(book);
   renderBooks();
 }
