@@ -5,20 +5,110 @@ body {
   grid-template-columns: 400px 1fr;
 }
 
+h1,
+h2 {
+  margin: 0;
+}
+
 #book-form {
-  background-color: #aedbe7;
+  z-index: 1;
   padding: 20px;
+  box-shadow: 4px 0px 4px rgb(0, 0, 0, 0.2);
+}
+
+#book-form input {
+  height: 24px;
+  border: none;
+  border-bottom: 1px solid #d6d9e1;
+}
+
+#book-form input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #55a2e6;
+}
+
+#book-form input:focus:invalid {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #e65555;
 }
 
 .form-field {
+  margin-top: 18px;
   display: flex;
   flex-direction: column;
 }
 
+#book-form ul {
+  padding: 0 0 20px 0;
+  margin: 16px 0 32px 0;
+  border-bottom: 1px solid #d6d9e1;
+  list-style-type: none;
+  display: flex;
+  gap: 24px;
+}
+
+#book-form li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#book-form input[type="radio"] {
+  position: relative;
+  margin: 0;
+  appearance: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 2px solid #d6d9e1;
+  border-radius: 50%;
+}
+
+#book-form input[type="radio"]:checked::before {
+  position: absolute;
+  top: -0.1rem;
+  color: #43b660;
+  font-weight: bold;
+  font-size: 1.5em;
+  content: "✓";
+}
+
+#book-form li label:hover,
+#book-form input[type="radio"]:hover {
+  cursor: pointer;
+}
+
+#book-form input[type="radio"]:hover:not(:checked) {
+  background-color: #d6d9e1;
+}
+
+.add-book-btn {
+  height: 36px;
+  width: 180px;
+  color: #fff;
+  font-weight: bold;
+  background-color: #884288;
+  border: none;
+  border-radius: 4px;
+}
+
+.add-book-btn:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgb(0, 0, 0, 0.2);
+}
+
+.add-book-btn:active {
+  background-color: #bf7cbf;
+}
+
 .library-container {
+  background-color: #f9fafb;
   padding: 20px;
   display: flex;
   justify-content: center;
+  align-content: start;
   gap: 30px;
   flex-wrap: wrap;
   overflow: auto;
