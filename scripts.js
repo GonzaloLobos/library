@@ -18,10 +18,14 @@ function generateRandomColour() {
 
 function submitHandler(e) {
   e.preventDefault();
-  const formInput = new FormData(form);
-  addBookToLibrary(formInput);
-  renderBooks();
-  form.reset();
+  if (myLibrary.length >= 50) {
+    alert("You can't store over 50 books!");
+  } else {
+    const formInput = new FormData(form);
+    addBookToLibrary(formInput);
+    renderBooks();
+    form.reset();
+  }
 }
 
 form.addEventListener("submit", submitHandler);
@@ -115,7 +119,7 @@ function renderBooks() {
 }
 
 // INITIAL BOOK EXAMPLES
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 49; i++) {
   const book = new Book(
     "Book Example",
     "Gonzo",
