@@ -40,8 +40,8 @@ function clickHandler(e) {
   if (selectedEelement.classList.contains("read-btn")) {
     myLibrary[selectedIndex].isRead = !myLibrary[selectedIndex].isRead;
     selectedEelement.textContent = myLibrary[selectedIndex].isRead
-      ? "Read"
-      : "Not read";
+      ? "(Read)"
+      : "(Not read)";
   }
 }
 
@@ -103,7 +103,7 @@ function renderBooks() {
 
     const isReadBtn = document.createElement("button");
     isReadBtn.classList.add("read-btn");
-    isReadBtn.textContent = currentBook.isRead ? "Read" : "Not read";
+    isReadBtn.textContent = currentBook.isRead ? "(Read)" : "(Not read)";
     isReadBtn.setAttribute("data-index", index);
 
     bookCover.append(bookTitleCover, p, bookAuthor);
@@ -116,17 +116,4 @@ function renderBooks() {
     );
     libraryContainer.appendChild(bookElement);
   });
-}
-
-// INITIAL BOOK EXAMPLES
-for (let i = 0; i < 49; i++) {
-  const book = new Book(
-    "Book Example",
-    "Gonzo",
-    200,
-    true,
-    generateRandomColour()
-  );
-  myLibrary.push(book);
-  renderBooks();
 }

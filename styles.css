@@ -104,7 +104,7 @@ h2 {
 }
 
 .library-container {
-  background-color: #f9fafb;
+  background-color: #ffeed2;
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -117,51 +117,98 @@ h2 {
 .book-cover {
   width: 200px;
   height: 300px;
+  padding: 8px 12px 32px;
   color: #fff;
   text-align: center;
   background-color: #884288;
   position: absolute;
   top: 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+
   transition: transform 0.8s;
   transform-origin: left;
-  border-radius: 5px;
+
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  align-content: center;
+}
+
+.book-cover p {
+  font-size: 18px;
+  margin: 16px 0 8px;
 }
 
 .book {
   width: 200px;
   height: 300px;
-  background-color: #eeede1;
+  background-color: #f9f8f4;
   position: relative;
   border-radius: 5px;
   text-align: center;
+  word-wrap: break-word;
   box-sizing: border-box;
   padding-left: 16px;
+  box-shadow: 2px 2px 4px 2px rgb(0, 0, 0, 0.2);
 
   display: grid;
-  grid-template: 20px auto auto 30px / 1fr;
+  grid-template: 24px auto auto 34px / 1fr;
   justify-content: center;
 }
 
 .book:hover {
   .book-cover {
-    transform: scale(0.07, 1);
+    transform: scale(0.08, 1);
   }
 }
 
 .book-title {
+  font-size: 28px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
+  align-self: center;
 }
 
 .book-author {
+  font-size: 24px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+.book > .book-title {
+  margin: 0 8px;
+}
+
+.book-pages {
+  font-size: 20px;
+}
+
 .delete-btn {
+  background-color: rgb(0, 0, 0, 0);
+  color: #e65555;
+  font-size: 100%;
+  border: none;
   justify-self: flex-end;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.read-btn {
+  color: #303030;
+  background-color: rgb(0, 0, 0, 0);
+  border: none;
+  border-top: 1px solid #ebe4c9;
+}
+
+.read-btn:hover {
+  cursor: pointer;
+  background-color: #ebe4c9;
 }
